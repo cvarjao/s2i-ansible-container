@@ -15,8 +15,8 @@ source /usr/libexec/s2i/common.sh
 
 export DOCKER_SOCKET=/var/run/docker.sock
 #export HOME=/tmp
-#export GIT_COMMITTER_NAME=sterburg
-#export GIT_COMMITTER_EMAIL=sterburg@redhat.com
+export GIT_COMMITTER_NAME=sterburg
+export GIT_COMMITTER_EMAIL=sterburg@redhat.com
 #export ANSIBLE_CONTAINER_PATH=/tmp/src
 ##export ANSIBLE_CONTAINER=1
 ##export ANSIBLE_ORCHESTRATED_HOSTS=localhost
