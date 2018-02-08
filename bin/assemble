@@ -72,6 +72,9 @@ if [[ -d /var/run/secrets/openshift.io/push ]] && [[ ! -e ~/.dockercfg ]]; then
 fi
 pwd
 ls -la ./
+
+source /opt/app-root/etc/scl_enable
+
 ansible-container --debug build
 #/usr/local/bin/builder.sh /usr/local/bin/ac_galaxy.py bbaassssiiee.base_naxsi
 #/usr/local/bin/builder.sh /usr/bin/ansible-playbook -vvv -i /etc/ansible/ansible-container-inventory.py -c docker main.yml
