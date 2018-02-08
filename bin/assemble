@@ -13,7 +13,7 @@ IFS=$'\n\t'
 
 source /usr/libexec/s2i/common.sh
 
-#export DOCKER_SOCKET=/var/run/docker.sock
+export DOCKER_SOCKET=/var/run/docker.sock
 #export HOME=/tmp
 #export GIT_COMMITTER_NAME=sterburg
 #export GIT_COMMITTER_EMAIL=sterburg@redhat.com
