@@ -74,6 +74,9 @@ pwd
 ls -la ./
 
 source /opt/app-root/etc/scl_enable
+export ANSIBLE_CONTAINER=1
+
+env
 
 ansible --version
 ansible-container version
