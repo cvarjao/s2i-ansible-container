@@ -71,6 +71,7 @@ if [[ -d /var/run/secrets/openshift.io/push ]] && [[ ! -e ~/.dockercfg ]]; then
   cp /var/run/secrets/openshift.io/push/.dockercfg ~/.dockercfg
 fi
 pwd
+ls -la ./
 ansible-container --debug build
 #/usr/local/bin/builder.sh /usr/local/bin/ac_galaxy.py bbaassssiiee.base_naxsi
 #/usr/local/bin/builder.sh /usr/bin/ansible-playbook -vvv -i /etc/ansible/ansible-container-inventory.py -c docker main.yml
