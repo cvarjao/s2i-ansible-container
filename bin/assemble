@@ -13,15 +13,19 @@ IFS=$'\n\t'
 
 source /usr/libexec/s2i/common.sh
 
-export DOCKER_SOCKET=/var/run/docker.sock
-export HOME=/tmp
-export GIT_COMMITTER_NAME=sterburg
-export GIT_COMMITTER_EMAIL=sterburg@redhat.com
-export ANSIBLE_CONTAINER_PATH=/tmp/src
-#export ANSIBLE_CONTAINER=1
-#export ANSIBLE_ORCHESTRATED_HOSTS=localhost
+#export DOCKER_SOCKET=/var/run/docker.sock
+#export HOME=/tmp
+#export GIT_COMMITTER_NAME=sterburg
+#export GIT_COMMITTER_EMAIL=sterburg@redhat.com
+#export ANSIBLE_CONTAINER_PATH=/tmp/src
+##export ANSIBLE_CONTAINER=1
+##export ANSIBLE_ORCHESTRATED_HOSTS=localhost
 export BUILD_DIR=/tmp/src #$(mktemp --directory)
-env
+export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}"
+#env
+if [ -n "${SOURCE_CONTEXT_DIR}" ]; then
+  export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}/${SOURCE_CONTEXT_DIR}"
+fi
 
 generate_passwd_file
 
@@ -59,20 +63,20 @@ if [[ "${SOURCE_REPOSITORY}" != "git://"* ]] && [[ "${SOURCE_REPOSITORY}" != "gi
       exit 1
     fi
   fi
-
 fi
-cd $BUILD_DIR/ansible
+
+cd "${BUILD_WITH_CONTEXT_DIR}"
 
 if [[ -d /var/run/secrets/openshift.io/push ]] && [[ ! -e $HOME/.dockercfg ]]; then
   cp /var/run/secrets/openshift.io/push/.dockercfg $HOME/.dockercfg
 fi
 
-ansible-container build
+ansible-container build --debug
 #/usr/local/bin/builder.sh /usr/local/bin/ac_galaxy.py bbaassssiiee.base_naxsi
 #/usr/local/bin/builder.sh /usr/bin/ansible-playbook -vvv -i /etc/ansible/ansible-container-inventory.py -c docker main.yml
 
 #if [ -n "${OUTPUT_IMAGE}" ] || [ -s "$HOME/.dockercfg" ]; then
-  ansible-container shipit openshift
-  ansible-container push 
+#  ansible-container shipit openshift
+#  ansible-container push 
 #fi
-
+exit 1
