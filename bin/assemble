@@ -25,7 +25,7 @@ export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}"
 if [ -n "${SOURCE_CONTEXT_DIR}" ]; then
   export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}/${SOURCE_CONTEXT_DIR}"
 fi
-export ANSIBLE_CONTAINER_PATH=/tmp/src
+#export ANSIBLE_CONTAINER_PATH=/tmp/src
 
 generate_passwd_file
 
