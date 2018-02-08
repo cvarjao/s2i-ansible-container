@@ -9,7 +9,7 @@ LABEL      io.k8s.description="Build Docker Images using Ansible Playbook" \
 USER 0
 
 RUN         source /opt/app-root/etc/scl_enable && source /opt/app-root/bin/activate && \
-            pip install docker docker-py ansible-container[docker] && \
+            pip install ansible docker docker-py ansible-container[docker,openshiftr] && \
             mkdir -p /etc/ansible/roles && chmod -R a+rwX /etc/ansible/roles \
                            /usr/lib/python2.7/site-packages
 

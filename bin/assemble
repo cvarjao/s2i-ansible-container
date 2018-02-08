@@ -75,6 +75,9 @@ ls -la ./
 
 source /opt/app-root/etc/scl_enable
 
+ansible --version
+ansible-container version
+
 ansible-container --debug build
 #/usr/local/bin/builder.sh /usr/local/bin/ac_galaxy.py bbaassssiiee.base_naxsi
 #/usr/local/bin/builder.sh /usr/bin/ansible-playbook -vvv -i /etc/ansible/ansible-container-inventory.py -c docker main.yml
