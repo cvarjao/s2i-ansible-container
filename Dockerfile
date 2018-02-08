@@ -6,6 +6,7 @@ LABEL      io.k8s.description="Build Docker Images using Ansible Playbook" \
            io.openshift.s2i.scripts-url=image:///usr/libexec/s2i \
            io.s2i.scripts-url=image:///usr/libexec/s2i
 
+USER 0
 
 RUN         source /opt/app-root/etc/scl_enable && source /opt/app-root/bin/activate && \
             pip install docker docker-py ansible-container[docker] && \
