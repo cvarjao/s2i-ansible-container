@@ -7,7 +7,7 @@ LABEL      io.k8s.description="Build Docker Images using Ansible Playbook" \
            io.s2i.scripts-url=image:///usr/libexec/s2i
 
 
-RUN         source /opt/app-root/bin/activate && \
+RUN         source /opt/app-root/etc/scl_enable && source /opt/app-root/bin/activate && \
             pip install docker docker-py ansible-container[docker] && \
             chmod -R a+rwX /etc/ansible/roles \
                            /usr/lib/python2.7/site-packages
