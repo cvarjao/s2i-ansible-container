@@ -1,4 +1,13 @@
 #!/bin/bash -x
+
+# print env
+env
+
+# move the application source
+ls -la /tmp/
+exit 1 # terminate and indicate error
+
+
 set -o pipefail
 IFS=$'\n\t'
 
