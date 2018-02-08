@@ -10,7 +10,7 @@ USER 0
 
 RUN         source /opt/app-root/etc/scl_enable && source /opt/app-root/bin/activate && \
             pip install docker docker-py ansible-container[docker] && \
-            chmod -R a+rwX /etc/ansible/roles \
+            mkdir -p /etc/ansible/roles && chmod -R a+rwX /etc/ansible/roles \
                            /usr/lib/python2.7/site-packages
 
 COPY        bin/  /usr/libexec/s2i/
