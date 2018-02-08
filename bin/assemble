@@ -14,11 +14,10 @@ IFS=$'\n\t'
 source /usr/libexec/s2i/common.sh
 
 export DOCKER_SOCKET=/var/run/docker.sock
-#export HOME=/tmp
+export HOME=/tmp
 export GIT_COMMITTER_NAME=sterburg
 export GIT_COMMITTER_EMAIL=sterburg@redhat.com
-#export ANSIBLE_CONTAINER_PATH=/tmp/src
-##export ANSIBLE_CONTAINER=1
+export ANSIBLE_CONTAINER=1
 ##export ANSIBLE_ORCHESTRATED_HOSTS=localhost
 export BUILD_DIR=/tmp/src #$(mktemp --directory)
 export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}"
@@ -26,6 +25,7 @@ export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}"
 if [ -n "${SOURCE_CONTEXT_DIR}" ]; then
   export BUILD_WITH_CONTEXT_DIR="${BUILD_DIR}/${SOURCE_CONTEXT_DIR}"
 fi
+export ANSIBLE_CONTAINER_PATH=/tmp/src
 
 generate_passwd_file
 
@@ -70,7 +70,7 @@ cd "${BUILD_WITH_CONTEXT_DIR}"
 if [[ -d /var/run/secrets/openshift.io/push ]] && [[ ! -e ~/.dockercfg ]]; then
   cp /var/run/secrets/openshift.io/push/.dockercfg ~/.dockercfg
 fi
-
+pwd
 ansible-container --debug build
 #/usr/local/bin/builder.sh /usr/local/bin/ac_galaxy.py bbaassssiiee.base_naxsi
 #/usr/local/bin/builder.sh /usr/bin/ansible-playbook -vvv -i /etc/ansible/ansible-container-inventory.py -c docker main.yml
